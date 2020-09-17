@@ -3,58 +3,66 @@
 
 int Point::_compteur = 0;
 
-Point::Point() {
+Point::Point() : _x(0), _y(0)
+{
     std::cout << __PRETTY_FUNCTION__ << std::endl;
     _compteur++;
-    _x = 0;
-    _y = 0;
 }
 
-Point::Point(const int x, const int y) {
+Point::Point(const int x, const int y) : _x(x), _y(y)
+{
     std::cout << __PRETTY_FUNCTION__ << std::endl;
     _compteur++;
-    _x = x;
-    _y = y;
 }
 
-Point::~Point() {
+Point::~Point()
+{
     _compteur--;
 }
 
-int Point::getCompteur() {
+int Point::getCompteur()
+{
     return _compteur;
 }
 
-int Point::getX() {
+int Point::getX()
+{
     return _x;
 }
 
-void Point::setX(const int x) {
+void Point::setX(const int x)
+{
     _x = x;
 }
 
-int Point::getY() {
+int Point::getY()
+{
     return _y;
 }
 
-void Point::setY(const int y) {
+void Point::setY(const int y)
+{
     _y = y;
 }
 
-void Point::deplacerDe(const int x, const int y) {
-    setX(getX()+x);
-    setY(getY()+y);
+void Point::deplacerDe(const int x, const int y)
+{
+    setX(getX() + x);
+    setY(getY() + y);
 }
 
-void Point::deplacerVers(const int x, const int y) {
+void Point::deplacerVers(const int x, const int y)
+{
     setX(x);
     setY(y);
 }
 
-void Point::afficherPoint() {
+void Point::afficherPoint()
+{
     std::cout << "X = " << getX() << " , Y = " << getY() << std::endl;
 }
 
-void Point::afficherCompteur() {
+void Point::afficherCompteur()
+{
     std::cout << "Compteur = " << getCompteur() << std::endl;
 }
