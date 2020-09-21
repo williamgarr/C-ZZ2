@@ -1,15 +1,6 @@
 #include <iostream>
 
-class Bavarde
-{
-private:
-    int _val;
-
-public:
-    Bavarde();
-    Bavarde(int val);
-    ~Bavarde();
-} bizarre(1);
+#include "bavarde.hpp"
 
 Bavarde::Bavarde() : _val(0)
 {
@@ -26,18 +17,12 @@ Bavarde::~Bavarde()
     std::cout << "Tais-toi " << _val << std::endl;
 }
 
-Bavarde globale(2);
-
-void fonction(Bavarde b)
+void Bavarde::afficher()
 {
-    std::cout << "code de la fonction";
+    cout << "Affichage de " << _val << endl;
 }
 
-int main(int, char **)
+int Bavarde::getVal()
 {
-    Bavarde b;
-    Bavarde *p = new Bavarde(3);
-    fonction(b);
-    delete p;
-    return 0;
+    return _val;
 }
