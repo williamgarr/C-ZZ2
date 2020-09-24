@@ -1,4 +1,4 @@
-SRC=producteur.cpp statisticien.cpp tests_catch.cpp main.cpp
+SRC=producteur_entier.cpp producteur_random.cpp statisticien.cpp tests_catch.cpp main.cpp
 #SRC=$(wildcard *.cpp)  
 EXE=cpp3
 

@@ -3,9 +3,15 @@
 
 #include <iostream>
 
-class Statisticien {
-	
+class Statisticien
+{
+private:
+    bool calcul;
 
+public:
+    Statisticien();
+    bool aCalcule();
+    void acquerir(std::string nom, int &somme, float &moyenne);
 };
 
 #endif

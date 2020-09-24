@@ -3,8 +3,24 @@
 
 #include <iostream>
 
-class Producteur {
+class Producteur
+{
+protected:
+    int travail;
 
+public:
+    Producteur() : travail(0) {}
+    int getTravail()
+    {
+        return travail;
+    }
+
+    void setTravail(int travail)
+    {
+        travail = travail;
+    }
+    
+    virtual bool produire(int quantite, std::string nom) = 0;
 };
 
 #endif
