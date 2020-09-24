@@ -72,7 +72,5 @@ int main(int, char **)
     pp->afficher(); // affiche Fille
     */
 
-    /* ETAPE 7 */
-    
     return 0;
 }
