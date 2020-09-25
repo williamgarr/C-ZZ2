@@ -16,12 +16,18 @@
 class Cercle
 {
 private:
-    int _x; // X position
-    int _y; // Y position
-    int _w; // Width
-    int _h; // Height
+    int _x;    // X position
+    int _y;    // Y position
+    int _w;    // Width
+    int _h;    // Height
+    int ordre; // Loading order
 
 public:
+    /**
+         * Constructeur par défaut de cercle (0, 0, 0, 0)
+         */
+    Cercle();
+
     /**
          * Constructeur de cercle à la position (0, 0)
          * avec une largeur w et une hauteur h 
@@ -45,6 +51,16 @@ public:
          * avec un rayon 
         */
     Cercle(int x, int y, int rayon);
+
+    /**
+         * Getter de l'attribut ordre (int)
+        */
+    int getOrdre();
+
+    /**
+         * Setter de l'attribut ordre (int)
+        */
+    void setOrdre(int n_ordre);
 
     /**
          * Méthode retournant une chaîne de caractére au format suivant :

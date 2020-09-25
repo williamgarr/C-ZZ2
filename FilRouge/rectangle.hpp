@@ -20,8 +20,14 @@ private:
     int _y; // Y position
     int _w; // Width
     int _h; // Height
+    int ordre;
 
 public:
+    /**
+         * Constructeur par défaut de rectangle (0, 0, 0, 0)
+         */ 
+    Rectangle();
+
     /**
          * Constructeur de rectangle à la position (0, 0)
          * avec une largeur w et une hauteur h 
@@ -33,6 +39,16 @@ public:
          * avec une largeur w et une hauteur h 
         */
     Rectangle(int x, int y, int w, int h);
+
+    /**
+         * Getter de l'attribut ordre (int)
+        */
+    int getOrdre();
+
+    /**
+         * Setter de l'attribut ordre (int)
+        */
+    void setOrdre(int n_ordre);
 
     /**
          * Méthode retournant une chaîne de caractére au format suivant :
