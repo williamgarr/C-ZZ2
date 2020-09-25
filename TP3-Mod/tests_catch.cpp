@@ -57,12 +57,13 @@ TEST_CASE("Producteur_Travail_Entiers")
 
 TEST_CASE("Producteur_Travail_Aleatoire")
 {
-
   const int DEMANDE = 10;
   const std::string NOM_FICHIER("test02.txt");
   int lecture, i;
   ProducteurAleatoire p;
   p.setSeed(12); // définir une seed fixe
+  // 26 10 92 59 19 64 52 37 51 9
+  int tab[DEMANDE] = {26, 10, 92, 59, 19, 64, 52, 37, 51, 9};
   p.produire(DEMANDE, NOM_FICHIER.c_str());
 
   std::ifstream fichier(NOM_FICHIER.c_str());
@@ -76,7 +77,7 @@ TEST_CASE("Producteur_Travail_Aleatoire")
     for (i = 0; i < DEMANDE; ++i)
     {
       fichier >> lecture;
-      REQUIRE(lecture == (i + 1));
+      REQUIRE(lecture == tab[i]);
     }
 
     REQUIRE(i == DEMANDE);

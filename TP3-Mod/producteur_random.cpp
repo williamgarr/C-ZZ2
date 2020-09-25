@@ -19,6 +19,7 @@ bool ProducteurAleatoire::produire(int quantite, std::string nom)
     std::ofstream fichier(nom.c_str());
     bool ret = false;
     default_random_engine re(seed);
+    re.seed(seed);
     uniform_int_distribution<int> distrib { 1, 100 };
 
     if (!fichier.fail())
