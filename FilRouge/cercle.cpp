@@ -1,29 +1,33 @@
 /* cercle.cpp | William Garrier | 17/09/2020 */
 #include "cercle.hpp"
 
-Cercle::Cercle() : _x(0), _y(0), _w(0), _h(0), ordre(-1) {}
+Cercle::Cercle() : Forme() {}
 
-Cercle::Cercle(int w, int h) : _x(0), _y(0), _w(w), _h(h), ordre(-1) {}
+Cercle::Cercle(int w, int h) : Forme(w, h) {}
 
-Cercle::Cercle(int rayon) : _x(0), _y(0), _w(rayon * 2), _h(rayon * 2), ordre(-1) {}
+Cercle::Cercle(int rayon) : Forme(rayon*2, rayon*2) {}
 
-Cercle::Cercle(int x, int y, int w, int h) : _x(x), _y(y), _w(w), _h(h), ordre(-1) {}
+Cercle::Cercle(int x, int y, int w, int h) : Forme(Point(x, y), COULEURS::BLEU, w, h) {}
 
-Cercle::Cercle(int x, int y, int rayon) : _x(x), _y(y), _w(rayon * 2), _h(rayon * 2), ordre(-1) {}
+Cercle::Cercle(int x, int y, int rayon) : Forme(Point(x, y), COULEURS::BLEU, rayon*2, rayon*2) {}
 
-int Cercle::getOrdre()
+int Cercle::getRayon() const
 {
-    return ordre;
+    if(getLargeur() == getHauteur())
+        return getHauteur()/2;
+    else
+        return -1;
 }
 
-void Cercle::setOrdre(int n_ordre)
+void Cercle::setRayon(int const rayon)
 {
-    ordre = n_ordre;
+    setLargeur(rayon*2);
+    setHauteur(rayon*2);
 }
 
 std::string Cercle::toString()
 {
     std::stringstream ss;
-    ss << "CERCLE " << _x << " " << _y << " " << _w << " " << _h;
+    ss << "CERCLE " << getPoint().getX() << " " << getPoint().getX() << " " << getLargeur() << " " << getHauteur();
     return ss.str();
 }

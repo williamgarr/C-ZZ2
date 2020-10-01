@@ -1,3 +1,4 @@
+/* FICHIER OBSOLETE -> utilisation de tests unitaires
 #include <iostream>
 #include "rectangle.hpp"
 #include "cercle.hpp"
@@ -25,3 +26,4 @@ int main(int, char **)
 
     return 0;
 }
+*/

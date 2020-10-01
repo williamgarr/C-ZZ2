@@ -1,9 +1,12 @@
-#SRC=main.cpp obj.cpp
-SRC=$(wildcard *.cpp)
-EXE=main
+SRC=cercle.cpp forme.cpp point.cpp rectangle.cpp tests_catch.cpp main_catch.cpp
+#SRC=$(wildcard *.cpp)  
+CXX=g++
+EXE=cpp4
 
-CXXFLAGS+=-Wall -Wextra -MMD -g -O2 -fdiagnostics-color=auto
-LDFLAGS= #-lSDL
+MACOS=
+#MACOS=-isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk
+CXXFLAGS+=-Wall -Wextra -MMD -g $(MACOS)
+LDFLAGS=$(MACOS)
 
 OBJ=$(addprefix build/,$(SRC:.cpp=.o))
 DEP=$(addprefix build/,$(SRC:.cpp=.d))
