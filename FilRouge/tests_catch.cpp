@@ -6,6 +6,7 @@
 #include "rectangle.hpp"
 #include "cercle.hpp"
 #include "forme.hpp"
+#include "groupe.hpp"
 
 // NOTE : ce test utilise des enum "class"
 // il faut donc utiliser un compilateur g++ >= 6.1
@@ -36,6 +37,7 @@ TEST_CASE("Origine", "[Point]") {
 	REQUIRE(Point::ORIGINE.getY() == 0);
 }
 
+/*
 TEST_CASE("Compteur", "[Forme]") {
    // Pour être correct, ce test doit etre le premier sur Forme
    REQUIRE(0 == Forme::prochainId());
@@ -93,6 +95,7 @@ TEST_CASE("BoiteEnglobante", "[Forme]") {
 	REQUIRE (f.getLargeur() == 0);
 	REQUIRE (f.getHauteur() == 0);
 }
+*/
 
 TEST_CASE("Cercle", "[Cercle]") {
    int compteur = Forme::prochainId();
@@ -106,7 +109,7 @@ TEST_CASE("Cercle", "[Cercle]") {
    REQUIRE(c2.getRayon()   == 3);
    REQUIRE(c2.toString()   == "CERCLE 0 0 6 6");
    REQUIRE(c2.getLargeur() == 6);
-   REQUIRE(c2.getHauteur() == 6);  
+   REQUIRE(c2.getHauteur() == 6);
 
    REQUIRE(Forme::prochainId() == (compteur+2) ); 
 }
@@ -120,4 +123,50 @@ TEST_CASE("Polymorphisme", "[Forme]") {
 
    delete f1;
    delete f2;
+}
+
+TEST_CASE("Groupe", "[Forme]") {
+	Forme * f1 = new Cercle(2, 3, 4, 5);
+	Forme * f2 = new Rectangle(1, 2, 8, 8);
+	Forme * f3 = new Cercle(15, 15, 5, 5);
+	Groupe p;
+
+	REQUIRE(p.getPoint().getX() == 0);
+	REQUIRE(p.getPoint().getY() == 0);
+	REQUIRE(p.max_x == 0);
+	REQUIRE(p.max_y == 0);
+	REQUIRE(p.getLargeur() == 0);
+	REQUIRE(p.getHauteur() == 0);
+	REQUIRE(p.nb_forme == 0);
+
+	p.ajouterForme(f1);
+	REQUIRE(p.getPoint().getX() == 2);
+	REQUIRE(p.getPoint().getY() == 3);
+	REQUIRE(p.max_x == 6);
+	REQUIRE(p.max_y == 8);
+	REQUIRE(p.getLargeur() == 4);
+	REQUIRE(p.getHauteur() == 5);
+	REQUIRE(p.nb_forme == 1);
+
+	p.ajouterForme(f2);
+	REQUIRE(p.getPoint().getX() == 1);
+	REQUIRE(p.getPoint().getY() == 2);
+	REQUIRE(p.max_x == 9);
+	REQUIRE(p.max_y == 10);
+	REQUIRE(p.getLargeur() == 8);
+	REQUIRE(p.getHauteur() == 8);
+	REQUIRE(p.nb_forme == 2);
+
+	p.ajouterForme(f3);
+	REQUIRE(p.getPoint().getX() == 1);
+	REQUIRE(p.getPoint().getY() == 2);
+	REQUIRE(p.max_x == 20);
+	REQUIRE(p.max_y == 20);
+	REQUIRE(p.getLargeur() == 19);
+	REQUIRE(p.getHauteur() == 18);
+	REQUIRE(p.nb_forme == 3);
+
+	delete f1;
+	delete f2;
+	delete f3;
 }

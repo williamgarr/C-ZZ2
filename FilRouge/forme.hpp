@@ -45,7 +45,7 @@ public:
     int getId() const;
     static int prochainId();
 
-    virtual std::string toString();
+    virtual std::string toString() = 0;
 };
 
 #endif

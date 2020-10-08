@@ -79,9 +79,11 @@ int Forme::prochainId()
     return _nbFormes;
 }
 
+/* Virtuel pure
 std::string Forme::toString()
 {
     std::stringstream ss;
     ss << "FORME " << getPoint().getX() << " " << getPoint().getY() << " " << getLargeur() << " " << getHauteur();
     return ss.str();
 }
+*/
