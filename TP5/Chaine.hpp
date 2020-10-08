@@ -4,7 +4,17 @@
 #include <iostream>
 #include <fstream>
 
-class Chaine  {
+class Chaine {
+    private:
+        char * tab;
+        int capacite;
+
+    public:
+        Chaine();
+        Chaine(char * src);
+        Chaine(int cap);
+        char* c_str() const;
+        int getCapacite() const;
 
 };
 

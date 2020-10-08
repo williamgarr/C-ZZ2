@@ -6,17 +6,15 @@
 TEST_CASE("Constructeur par defaut") {
    Chaine c;
    CHECK( -1 == c.getCapacite());
-   CHECK(  0 == c.c_str()); // 0, NULL, ou nullptr
+   CHECK(  NULL == c.c_str()); // 0, NULL, ou nullptr
 }
 
-/*
 TEST_CASE("Verification des const sur les accesseurs") {
    const Chaine c;
    CHECK( -1 == c.getCapacite());
    CHECK(  0 == c.c_str()); // 0, NULL, ou nullptr
-} */
+}
 
-/*
 TEST_CASE("Constructeur par chaine C") {
 	char  source []= "rien";
     Chaine c1(source);
@@ -28,16 +26,15 @@ TEST_CASE("Constructeur par chaine C") {
     CHECK( 0 == strcmp("", c2.c_str())); 
 
     // Verifier que la liberation memoire est bien faite
-} */
+}
 
-/*
 TEST_CASE("Constructeur avec capacite") {
     Chaine c1(6);
     CHECK( 6 == c1.getCapacite());
     CHECK( 0 == strlen(c1.c_str())); 
 
     // Verifier que la liberation memoire est bien faite
-}*/
+}
 
 /*
 TEST_CASE("Constructeur de copie") {
