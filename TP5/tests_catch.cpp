@@ -36,7 +36,6 @@ TEST_CASE("Constructeur avec capacite") {
     // Verifier que la liberation memoire est bien faite
 }
 
-/*
 TEST_CASE("Constructeur de copie") {
     Chaine s1(10);   // une chaine vide
     Chaine s2 = s1;  // une autre chaine vide
@@ -46,9 +45,8 @@ TEST_CASE("Constructeur de copie") {
     // j'ai converti en void * uniquement pour l'affichage de catch
     CHECK( (void *)s1.c_str() != (void *)s2.c_str() );
     CHECK( 0 == strcmp(s1.c_str(), s2.c_str() ));
-}*/
+}
 
-/*
 TEST_CASE("methode afficher") {
 	const char * original = "une chaine a tester";
     const Chaine c1(original);
@@ -58,9 +56,8 @@ TEST_CASE("methode afficher") {
     c1.afficher(ss);
 
     CHECK( ss.str() == original); // test de std::string :-)
-}*/
+}
 
-/*
 TEST_CASE("operateur d'affectation") {
 	Chaine s1("une premiere chaine");
     Chaine s2("une deuxieme chaine plus longue que la premiere");
@@ -72,15 +69,46 @@ TEST_CASE("operateur d'affectation") {
     CHECK( 0 == strcmp(s1.c_str(), s2.c_str() ));
 
     s1 = s1; // est ce que cela va survivre a l execution ?
-}*/
+}
 
+TEST_CASE("Affichage valeur/reference") {
+    Chaine s1("une premiere chaine");
+    afficherParValeur(s1);
+    afficherParRefence(s1);
+}
 /*
 TEST_CASE("Surcharge <<") {
 	const char * chaine = "une nouvelle surcharge";
 	Chaine s(chaine);
     std::stringstream ss;
-    // ss << s;  // :-)
+    ss << s;  // :-)
 
     CHECK( ss.str() == chaine ); //  test de std::string, again :-))
+}*/
+
+TEST_CASE("Surcharge [] modif") {
+    Chaine s1("toto");
+    s1[0] = 'd';
+
+    CHECK( 0 == strcmp(s1.c_str(), "doto"));
 }
-*/
+
+TEST_CASE("Surchage << v2") {
+    const char * chaine = "Toto";
+    const char * chaine2 = "T\no\nt\no";
+	Chaine s(chaine);
+    std::stringstream ss;
+    ss << s;  // :-)
+
+    CHECK( ss.str() == chaine2 ); //  test de std::string, again :-))
+}
+
+TEST_CASE("Surcharge +") {
+    const char * chaine1 = "Toto";
+    const char * chaine2 = "Doto";
+    const char * chaine3 = "TotoDoto";
+    Chaine s1(chaine1);
+    Chaine s2(chaine2);
+
+    CHECK( 0 == strcmp((s1+s2).c_str(), chaine3));
+}
