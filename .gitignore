@@ -1,6 +1,7 @@
 # Personal
 main
 .vscode/settings.json
+cpp*
 
 # Prerequisites
 *.d
